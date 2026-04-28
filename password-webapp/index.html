@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Lösenordsgenerator (max 10 tecken)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="title">
+          <h1>Lösenordsgenerator</h1>
+          <p class="subtitle">Skapar säkra lösenord med max <strong>10</strong> tecken. Ingen server.</p>
+        </div>
+        <div class="header-actions">
+          <button id="themeToggle" class="btn btn-ghost" type="button" aria-pressed="false">
+            Växla tema
+          </button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="card">
+          <h2 class="card-title">Inställningar</h2>
+
+          <div class="grid">
+            <div class="field">
+              <label class="label" for="length">Längd (1–10)</label>
+              <div class="row">
+                <input
+                  id="length"
+                  class="slider"
+                  type="range"
+                  min="1"
+                  max="10"
+                  step="1"
+                  value="10"
+                />
+                <input id="lengthNum" class="input input-num" type="number" min="1" max="10" value="10" />
+              </div>
+              <p class="help">Tips: korta lösenord är begränsade av längden, välj därför flera teckentyper.</p>
+            </div>
+
+            <div class="field">
+              <span class="label">Teckentyper</span>
+              <div class="checks">
+                <label class="check">
+                  <input id="useLower" type="checkbox" checked />
+                  <span>Gemener (a-z)</span>
+                </label>
+                <label class="check">
+                  <input id="useUpper" type="checkbox" />
+                  <span>Versaler (A-Z)</span>
+                </label>
+                <label class="check">
+                  <input id="useDigits" type="checkbox" checked />
+                  <span>Siffror (0-9)</span>
+                </label>
+                <label class="check">
+                  <input id="useSymbols" type="checkbox" />
+                  <span>Symboler</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="check">
+                <input id="avoidAmbiguous" type="checkbox" checked />
+                <span>Undvik otydliga tecken (t.ex. `O/0`, `I/l/1`)</span>
+              </label>
+            </div>
+
+            <div class="field">
+              <label class="label" for="symbolInput">Egna symboler (valfritt)</label>
+              <input
+                id="symbolInput"
+                class="input"
+                type="text"
+                inputmode="text"
+                placeholder="Ex: !@#$%*()-_ ..."
+                maxlength="80"
+              />
+              <p class="help">Om du skriver något här används bara dessa symboler.</p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="count">Antal att generera</label>
+              <div class="row">
+                <input
+                  id="count"
+                  class="slider"
+                  type="range"
+                  min="1"
+                  max="10"
+                  step="1"
+                  value="5"
+                />
+                <input id="countNum" class="input input-num" type="number" min="1" max="10" value="5" />
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="generateBtn" class="btn btn-primary" type="button">Generera lösenord</button>
+            <button id="clearHistoryBtn" class="btn btn-danger" type="button">Rensa historik</button>
+          </div>
+
+          <div id="errorBox" class="error" role="alert" hidden></div>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">Resultat</h2>
+
+          <div class="meterWrap">
+            <div class="meter">
+              <div id="meterBar" class="meter-bar" style="width: 0%"></div>
+            </div>
+            <div class="meter-meta">
+              <span id="entropyLabel" class="muted">Entropi: 0 bits</span>
+              <span id="strengthLabel" class="badge">—</span>
+            </div>
+          </div>
+
+          <div id="results" class="results" aria-live="polite"></div>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">Historik</h2>
+          <p class="help">Sparas lokalt i webbläsaren. Max 20 poster.</p>
+          <ul id="history" class="history" aria-label="Genererade lösenord"></ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="muted">Säker slumptal: `crypto.getRandomValues()`</span>
+        <span class="muted">Max längd: 10 tecken</span>
+      </footer>
+    </div>
+
+    <template id="resultTemplate">
+      <div class="result">
+        <div class="result-main">
+          <div class="pw"></div>
+          <div class="metaRow">
+            <span class="muted pw-entropy"></span>
+            <span class="badge pw-strength"></span>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-ghost btn-small copyBtn" type="button" data-action="copy">
+            Kopiera
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="historyTemplate">
+      <li class="histItem">
+        <div class="histMain">
+          <code class="histPw"></code>
+          <div class="histMeta">
+            <span class="muted histTime"></span>
+            <span class="muted histEntropy"></span>
+          </div>
+        </div>
+        <div class="histActions">
+          <button class="btn btn-ghost btn-small copyBtn" type="button" data-action="copy">
+            Kopiera
+          </button>
+          <button class="btn btn-ghost btn-small" type="button" data-action="delete">
+            Ta bort
+          </button>
+        </div>
+      </li>
+    </template>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
+

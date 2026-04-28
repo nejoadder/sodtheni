@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="lightu dark" />
+    <title>Enkel Webbapp – Anteckningar</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="title">
+          <h1>Anteckningar</h1>
+          <p class="subtitle">Snabbt, enkelt och sparas lokalt i din webbläsare.</p>
+        </div>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="btn btn-ghost" type="button" aria-pressed="false">
+            Växla tema
+          </button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="card">
+          <form id="noteForm" class="form" autocomplete="off">
+            <label class="label" for="noteText">Skriv anteckning:</label>
+            <div class="row">
+              <input
+                id="noteText"
+                name="noteText"
+                class="input"
+                type="text"
+                placeholder="Skriv något…"
+                maxlength="200"
+                required
+              />
+              <button class="btn btn-primary" type="submit">Lägg till</button>
+            </div>
+            <div class="helper">
+              <span id="charCount" aria-live="polite">0/200</span>
+              <button id="clearAll" class="btn btn-danger btn-small" type="button">
+                Rensa allt
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="toolbar">
+            <label class="label" for="search">Sök</label>
+            <input id="search" class="input" type="search" placeholder="Filtrera anteckningar…" />
+          </div>
+          <ul id="noteList" class="list" aria-live="polite" aria-label="Anteckningar"></ul>
+          <p id="emptyState" class="empty">Inga anteckningar ännu. Lägg till en ovan.</p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span id="stats" class="stats">0 anteckningar</span>
+        <span class="muted">Ingen server behövs.</span>
+      </footer>
+    </div>
+
+    <template id="noteItemTemplate">
+      <li class="item">
+        <div class="item-main">
+          <p class="item-text"></p>
+          <p class="item-meta muted"></p>
+        </div>
+        <div class="item-actions">
+          <button class="btn btn-ghost btn-small" data-action="edit" type="button">Redigera</button>
+          <button class="btn btn-ghost btn-small" data-action="delete" type="button">Ta bort</button>
+        </div>
+      </li>
+    </template>
+
+
+    <!--<h1 id="demo"></h1>
+    <button type="button" onclick="myFunction()">Tryck på!!!</button>--> 
+    
+    <!--<script>
+      alert("Hello, World!");
+      document.write('Hello, World!');
+
+      function myFunction() {
+        alert('Har just tryckt på KNAPPEN!!!! - fick alert fönstret utskriven');
+      }
+    </script>-->
+
+
+    <!--<script>
+      /*try {
+        const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+        const getData = async () => {
+          await fetch(url);
+        };
+      }
+      catch (err) {
+        alert(err.data)
+      }*/
+
+      /*fetch('www.apple.com').then(function(response) {
+        alert(response.url);
+      }).then(function(string) {
+          alert(string);
+      }).catch(function(err) {
+        Console.console.log((err));
+        alert(err)
+      });*/
+
+      /*fetchData();*/
+
+      /*async function getData() {
+        const url = "https://www.apple.se";
+        try {
+          const reposnse = await fetch(url);
+          alert(Response.getData());
+        }
+        catch (error) {
+          console.log(error);
+          alert(error);
+        }
+      }
+
+      getData();*/
+
+      /*const response = fetch('https://apple.se')
+        .then(response => response.text()) // Omvandla svaret till text
+        .then(html => {
+          console.log(html); // Här har du HTML-koden som en sträng
+          // Exempel: Sätt in innehållet i ett element
+          document.getElementById('innehall').innerHTML = html;
+        })
+        {
+          catch(error => console.error('Fel vid hämtning:', error));
+      }*/
+
+      /*var tekst = 'TEST STRING!!';
+      alert(tekst);
+
+      const reponse = await fetch('http://www.apple.se');
+      alert(response);*/
+    </script>-->
+
+    <h1 id="something">
+      <p>TEST 1 </p>
+      <p>TEST 2</p>
+    </h1>
+
+    <!--<canvas id="minCanvas" width="200" height="100"></canvas>-->
+
+    <p>Hej! Jag är ett popup-fönster.</p>
+
+    <!--<dialog id="dialogRuta">
+      <p>Hej! Jag är ett popup-fönster.</p>
+      <button onclick="document.getElementById('dialogRuta').close()">Stäng</button>
+    </dialog>-->
+
+    <script>
+
+      /*fetch("https://www.apple.com")
+      .then(res => res.text())   // hämtar som vanlig text
+      .then(html => console.log(html));*/
+      document.getElementById("something").innerHTML = "Skrev i tekst till inre html";
+
+    </script>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

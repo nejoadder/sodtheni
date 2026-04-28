@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend -> Backend Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+      button {
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 12px;
+        border-radius: 6px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hämta data från Node-backend</h1>
+    <button id="fetchBtn">Hämta från backend</button>
+    <pre id="result">Tryck på knappen för att anropa API:t.</pre>
+
+    <script>
+      async function hamtaDataFranBackend() {
+        const resultEl = document.getElementById("result");
+        resultEl.textContent = "Laddar...";
+
+        try {
+          const response = await fetch("http://localhost:3001/api/post");
+
+          if (!response.ok) {
+            throw new Error("HTTP-fel: " + response.status);
+          }
+
+          const data = await response.json();
+          resultEl.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultEl.textContent = "Fel vid anrop: " + error.message;
+        }
+      }
+
+      document
+        .getElementById("fetchBtn")
+        .addEventListener("click", hamtaDataFranBackend);
+    </script>
+  </body>
+</html>

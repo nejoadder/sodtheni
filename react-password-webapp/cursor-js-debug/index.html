@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Debug i Cursor</title>
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+      input { padding: 8px; width: 120px; }
+      button { padding: 8px 14px; margin-left: 8px; cursor: pointer; }
+      pre { background: #f4f4f4; border-radius: 6px; padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h1 style="font-size: 500%;">Hello World!!!</h1>
+        <p style="border: 2px;color:Tomato;padding: 17px;">Den här är deliterad tekstu!!!</p>
+        <p><ins>Den här är inserad tekst!!!</ins></p>
+        <p><bdo dir="rtl"><br>Testa bdo!!!<br></bdo>Testa: <sup>Super skript tag!!!</sup></p>
+        <p><a href="http://www.sega.co.jp"><em>Empasized tekst!!!</em></p>
+        <p><blockquote>Blockquote tag!!!</blockquote></p>
+
+        <p><q><br>Quoted tekst!!!</q></p>
+        <p><q>Äpple länk<a href="https://www.nintendo.se" target="_parent">Apple</a></q></p>
+        <br>
+    </div>
+
+    <pre>
+      <table class="tabelEgenClass"><!--styles="border: 5px solid black">-->
+        <caption>CAPTION NÅGONTING!!!!</caption>
+
+        <tr id="tr1">
+          <!--<td style="border: 2px solid blue; border-radius: 22px; background-color:rgb(146, 82, 82)">TEST 1.1</td>
+          <td style="border: 2px solid green; border-radius: 15px;">TEST 1.2</td>
+          <td style="border: 2px solid red;border-radius: 7px;">TEST 1.3</td>-->
+          <td>TEST 1.1</td>
+          <td>TEST 1.2</td>
+          <td>TEST 1.3</td>
+        </tr>
+        <tr id="tr2">
+          <!--<td style="border: 2px solid yellow; border-collapse: collapse; border-radius: 12px; background-color: cadetblue;">TEST 2.1</td>
+          <td style="border: 2px solid brown; border-collapse: collapse; border-radius: 38px;">TEST 2.2</td>
+          <td style="border: 2px solid black; border-radius: 8px; background-color: burlywood;">TEST 2.3</td>-->
+          <td>TEST 2.1</td>
+          <td>TEST 2.2</td>
+          <td>TEST 2.3</td>
+        </tr>
+        <tr id="tr3">
+          <!--<td style="border: 2px solid grey; border-radius: 10px; background-color: aliceblue;">TEST 3.1</td>-->
+          <!--<td style="border: 2px solid violet; border-collapse: collapse; border-radius: 9px;">TEST 3.2</td>-->
+          <!--<td style="border: 2px solid orange; border-radius: 5px;">TEST 3.3-->
+          <th>TH TEST1</th>
+          <th>TH TEST2</th>
+          <th>TH TEST3</th>
+          <!--</td>-->
+        </tr>
+      </table>
+    <pre>
+
+    <!--<table id="tableSpecial" style="background-color: blueviolet;">-->
+    <table id="tableSpecial">
+      <tr>
+        <td>EXPERIMENTAL TD1</td>
+        <td>EXPERIMENTAL TD2</td>
+        <td>EXPERIMENTAL TD3</td>
+      </tr>
+    </table>
+
+    <button id="btn">KLICK PÅ KNAPPEN - KALLA JAVASCRIPT FUNKTION!!!</button>
+
+      <table id="nagonTabel">
+          <p id="pSista">En tum tabel där jag vill bifoga en annan tabell!!!</p>
+      </table>
+
+      <button onclick="bifogaTabelen()">Bifoga tabelen!!!</button>
+
+      <h1 style="size: 20px;">Hämta data från Node-backend</h1>
+      <button id="fetchBtn">Hämta från backend</button>
+      <pre id="result">Tryck på knappen för att anropa API:t.</pre>
+
+      <script>
+        alert("Prova debug!!!");
+
+      </script>
+    
+    <h1>Enkel web projekt</h1>
+    <p>Klicka pa knappen och debugga i <code>app.js</code>.</p>
+
+    <input id="x" type="number" value="5" />
+    <input id="y" type="number" value="7" />
+    <button id="runBtn">Rakna</button>
+
+    <pre id="out">Redo...</pre>
+
+    <script src="./app.js"></script>
+
+    <script src="javascript/script.js"></script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

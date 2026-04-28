@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(42, 45, 46)
+}
+
+
+.tabelEgenClass {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+table {
+    border: 25px solid red;
+    border-spacing: 25px;
+    width: 80%;
+    height: 25%;
+    background-color: rgb(95, 57, 30);
+    background-position: right top;
+    background-attachment: scroll;
+    border-radius: 12px;
+    /*clip-path: circle(100% at 75% 100%);*/
+    filter: blur(1px);
+    opacity: 0.4;
+}
+
+p.outset {
+    border-style: outset;
+}
+
+
+caption {
+    background-color:rgb(71, 43, 71);
+    border-spacing: 150px;
+    padding: 45px;
+    text-align: center;
+    font-size: large;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+}
+
+
+#tr1 {
+    width: 75%;
+    height: 25%;
+    border: 5px solid dodgerblue;
+    border-radius: 50px;
+    background-color: rgb(180, 41, 133);
+    text-align: right;
+}
+
+
+#tr2 {
+    width: 75%;
+    border: 25px solid tomato;
+    border-radius: 50%;
+    background-color: dimgray;
+    text-align: center;
+}
+
+
+#tr3 {
+    width: 75%;
+    border: 5px solid rgb(red, green, blue);
+    border-radius: 50%;
+    background-color: yellowgreen;
+}
+
+
+#tableSpecial {
+    background-color: burlywood;
+}
+
+button {
+    font-size: 20px;
+    color: brown;
+    padding: 15px;
+    text-align: right;
+}
+
+
+p {
+    color: white
+}
+
+#pSista {
+    color: yellow;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+}

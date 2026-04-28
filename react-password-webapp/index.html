@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>React – Lösenordsgenerator</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="javascript/script.js" defer></script>-->
+
+    <!--<style>
+      body {background-color: powderblue}
+      p {color: white;}
+    </style>-->
+  </head>
+  <body>
+    <div id="root">
+      <h1 style="font-size: 500%;">Hello World!!!</h1>
+        <p style="border: 2px;color:Tomato;padding: 17px;">Den här är deliterad tekstu!!!</p>
+        <p><ins>Den här är inserad tekst!!!</ins></p>
+        <p><bdo dir="rtl"><br>Testa bdo!!!<br></bdo>Testa: <sup>Super skript tag!!!</sup></p>
+        <p><a href="http://www.sega.co.jp"><em>Empasized tekst!!!</em></p>
+        <p><blockquote>Blockquote tag!!!</blockquote></p>
+
+        <p><q><br>Quoted tekst!!!</q></p>
+        <p><q>Äpple länk<a href="https://www.nintendo.se" target="_parent">Apple</a></q></p>
+        <br>
+    </div>
+
+      <pre>
+        <table class="tabelEgenClass"><!--styles="border: 5px solid black">-->
+          <caption>CAPTION NÅGONTING!!!!</caption>
+
+          <tr id="tr1">
+            <!--<td style="border: 2px solid blue; border-radius: 22px; background-color:rgb(146, 82, 82)">TEST 1.1</td>
+            <td style="border: 2px solid green; border-radius: 15px;">TEST 1.2</td>
+            <td style="border: 2px solid red;border-radius: 7px;">TEST 1.3</td>-->
+            <td>TEST 1.1</td>
+            <td>TEST 1.2</td>
+            <td>TEST 1.3</td>
+          </tr>
+          <tr id="tr2">
+            <!--<td style="border: 2px solid yellow; border-collapse: collapse; border-radius: 12px; background-color: cadetblue;">TEST 2.1</td>
+            <td style="border: 2px solid brown; border-collapse: collapse; border-radius: 38px;">TEST 2.2</td>
+            <td style="border: 2px solid black; border-radius: 8px; background-color: burlywood;">TEST 2.3</td>-->
+            <td>TEST 2.1</td>
+            <td>TEST 2.2</td>
+            <td>TEST 2.3</td>
+          </tr>
+          <tr id="tr3">
+            <!--<td style="border: 2px solid grey; border-radius: 10px; background-color: aliceblue;">TEST 3.1</td>-->
+            <!--<td style="border: 2px solid violet; border-collapse: collapse; border-radius: 9px;">TEST 3.2</td>-->
+            <!--<td style="border: 2px solid orange; border-radius: 5px;">TEST 3.3-->
+            <th>TH TEST1</th>
+            <th>TH TEST2</th>
+            <th>TH TEST3</th>
+            <!--</td>-->
+          </tr>
+        </table>
+      <pre>
+
+      <!--<table id="tableSpecial" style="background-color: blueviolet;">-->
+      <table id="tableSpecial">
+        <tr>
+          <td>EXPERIMENTAL TD1</td>
+          <td>EXPERIMENTAL TD2</td>
+          <td>EXPERIMENTAL TD3</td>
+        </tr>
+      </table>
+
+      <!--<button onclick="returnAlert()">TEST BUTTON TEST</button>-->
+
+      <!--<button id="btn" onclick="returnAlert()">TEST BUTTON TEST</button>-->
+
+      <button id="btn">KLICK PÅ KNAPPEN - KALLA JAVASCRIPT FUNKTION!!!</button>
+
+      <table id="nagonTabel">
+          <p id="pSista">En tum tabel där jag vill bifoga en annan tabell!!!</p>
+      </table>
+
+      <button onclick="bifogaTabelen()">Bifoga tabelen!!!</button>
+
+      <h1 style="size: 20px;">Hämta data från Node-backend</h1>
+      <button id="fetchBtn">Hämta från backend</button>
+      <pre id="result">Tryck på knappen för att anropa API:t.</pre>
+
+      <script>
+        alert("Prova debug!!!");
+
+        document.getElementById('btn').addEventListener('click', () => {
+    returnAlert();
+  });
+
+  function bifogaTabelen() {
+    let result =  prompt("Skriv i nånting: ");
+    alert("Print out result: " + result);
+    alert(typeof(result));
+
+    let number = 1234;
+
+    alert("Casta nummret till string typ: " + typeof number);
+
+    let strNumber = String(number);
+    alert(typeof(strNumber));
+
+    alert("BIFOGA TABELEN!!!");
+
+    const tabel1 = document.getElementById("tableSpecial");
+    const tabel2 = document.getElementById("nagonTabel");
+
+    tabel2.appendChild(tabel1);
+
+    alert("Ska fetcha funktionen som ger tillbaka data. Kallar en api!!!");
+    fetchPost();
+
+  }
+
+  function returnAlert() { 
+    
+    /*[1, 2, 3, 4].forEach(alert(ble()));*/
+    /*alert('Test')*/
+
+    /*[1, 2, 3, 4].forEach(alert("Kort FOR LOOP!!!"));*/
+
+    const array = ["hehe", "blah", "ble"];
+
+    array.forEach((value, index) => {
+      alert('Value: ' + value + ' ,Index: ' + index);
+    });
+
+    /*ble();*/
+
+    alert('Kör på FOR LOOP med nycklar!!!');
+
+    const keyArray = { Someone: "Någon Person: ", Namn: "Anna" };
+
+    for (const key in keyArray) {
+      /*alert('Name: ' + name + ', ');*/
+      alert(key + ', ' + keyArray[key]);
+
+    }
+  }
+
+  
+  function ble() {
+    let tekstAlert = "test någonting";
+    alert(tekstAlert);
+  }
+
+
+  async function fetchPost() {
+    try {
+      //let response = await fetch ("https://jsonplaceholder.typicode.com/posts");
+      let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+      let data = await response.json();
+
+      const doc = document.getElementById("pSista");
+      const htmlTabel = `<tabel><tr><td>Title: </td><td>${data.title}</td></tr></br><tr><td>Blah</td>Blah<td></td></tr>
+                         </br><tr><td>Hehe</td><td>Hehe</td></tr></br><tr><td>Body: </td><td>${data.body}</td></br></tr></tabel>`;
+      doc.innerHTML = htmlTabel;
+
+      //const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");  
+      //const ble = await res.json();
+      //alert(ble.title);
+    }
+    catch (err) {
+      alert(err);
+
+    }
+
+  }
+
+
+  async function hamtaDataFranBackend() {
+    const resultEl = document.getElementById("result");
+    resultEl.textContent = "Laddar...";
+
+    try {
+      const response = await fetch("http://localhost:3001/api/post");
+
+      if (!response.ok) {
+      throw new Error("HTTP-fel: " + response.status);
+      }
+
+      const data = await response.json();
+      resultEl.textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+      resultEl.textContent = "Fel vid anrop: " + error.message;
+    }
+  }
+
+  document.getElementById("fetchBtn").addEventListener("click", hamtaDataFranBackend);
+
+  async function hamtaDataFranBackend() {
+    const resultEl = document.getElementById("result");
+    resultEl.textContent = "Laddar...";
+
+    try {
+      const response = await fetch("http://localhost:3001/api/post");
+
+      if (!response.ok) {
+        throw new Error("HTTP-fel: " + response.status);
+      }
+
+      const data = await response.json();
+      resultEl.textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+            resultEl.textContent = "Fel vid anrop: " + error.message;
+          }
+        }
+
+        document.getElementById("fetchBtn").addEventListener("click", hamtaDataFranBackend);
+
+      </script>
+
+      <!--<script src="javascript/script.js"></script>
+      <script type="module" src="/src/main.jsx"></script>-->
+  </body>
+</html>

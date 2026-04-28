@@ -1,0 +1,14 @@
+{
+  "name": "password-backend",
+  "version": "1.0.0",
+  "description": "Backend API for generating secure passwords (max 10 characters)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
+

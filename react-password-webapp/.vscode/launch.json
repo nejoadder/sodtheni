@@ -1,0 +1,15 @@
+{
+  
+  
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug JS web app i Cursor",
+      "type": "pwa-chrome",
+      "request": "launch",
+      /*"file": "${workspaceFolder}/cursor-js-debug/index.html",*/
+      "file": "${workspaceFolder}/index.html",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
